@@ -8,6 +8,9 @@ import javax.swing.JMenu;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.border.TitledBorder;
 
 public class AlunoWindow {
 
@@ -78,5 +81,23 @@ public class AlunoWindow {
 		txtRegistroAcademico.setColumns(10);
 		txtRegistroAcademico.setBounds(167, 47, 216, 19);
 		frame.getContentPane().add(txtRegistroAcademico);
+		
+		JPanel painelSexo = new JPanel();
+		painelSexo.setBorder(new TitledBorder(null, "Sexo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		painelSexo.setBounds(41, 159, 192, 144);
+		frame.getContentPane().add(painelSexo);
+		painelSexo.setLayout(null);
+		
+		JRadioButton rbMasculino = new JRadioButton("Masculino");
+		rbMasculino.setBounds(22, 27, 103, 21);
+		painelSexo.add(rbMasculino);
+		
+		JRadioButton rbFeminino = new JRadioButton("Feminino");
+		rbFeminino.setBounds(22, 62, 103, 21);
+		painelSexo.add(rbFeminino);
+		
+		JRadioButton rbNaoInformar = new JRadioButton("Não Informar");
+		rbNaoInformar.setBounds(22, 97, 103, 21);
+		painelSexo.add(rbNaoInformar);
 	}
 }
