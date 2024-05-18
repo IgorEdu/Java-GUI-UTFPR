@@ -20,13 +20,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JMenuItem;
+import javax.swing.JFormattedTextField;
+import javax.swing.JScrollPane;
 
 public class AlunoWindow {
 
 	private JFrame frame;
 	private JTextField txtNome;
 	private JTextField txtRegistroAcademico;
-	private JTextField txtDataIngresso;
 	private JTextField txtCoeficiente;
 	private JTable tblAlunos;
 
@@ -132,12 +133,6 @@ public class AlunoWindow {
 		lblDataIngresso.setBounds(226, 219, 108, 13);
 		frame.getContentPane().add(lblDataIngresso);
 		
-		txtDataIngresso = new JTextField();
-		txtDataIngresso.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		txtDataIngresso.setColumns(10);
-		txtDataIngresso.setBounds(335, 216, 117, 19);
-		frame.getContentPane().add(txtDataIngresso);
-		
 		JLabel lblPeriodo = new JLabel("Período");
 		lblPeriodo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblPeriodo.setBounds(476, 219, 67, 13);
@@ -182,14 +177,22 @@ public class AlunoWindow {
 		frame.getContentPane().add(painelAlunos);
 		painelAlunos.setLayout(null);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 20, 549, 229);
+		painelAlunos.add(scrollPane);
+		
 		tblAlunos = new JTable();
-		tblAlunos.setBounds(10, 20, 549, 229);
+		scrollPane.setViewportView(tblAlunos);
 		tblAlunos.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
+				"RA", "Nome", "Sexo", "Curso", "Data do Inicio", "Per\u00EDodo", "Coeficiente"
 			}
 		));
-		painelAlunos.add(tblAlunos);
+		
+		JFormattedTextField txtDataIngresso = new JFormattedTextField();
+		txtDataIngresso.setBounds(344, 218, 108, 19);
+		frame.getContentPane().add(txtDataIngresso);
 	}
 }
