@@ -13,6 +13,10 @@ import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
+import javax.swing.JSeparator;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AlunoWindow {
 
@@ -143,5 +147,23 @@ public class AlunoWindow {
 		txtCoeficiente.setColumns(10);
 		txtCoeficiente.setBounds(335, 266, 117, 19);
 		frame.getContentPane().add(txtCoeficiente);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(24, 329, 569, 13);
+		frame.getContentPane().add(separator);
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCadastrar.setBounds(274, 352, 154, 42);
+		frame.getContentPane().add(btnCadastrar);
+		
+		JButton btnLimparCampos = new JButton("Limpar Campos");
+		btnLimparCampos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnLimparCampos.setBounds(439, 352, 154, 42);
+		frame.getContentPane().add(btnLimparCampos);
 	}
 }
