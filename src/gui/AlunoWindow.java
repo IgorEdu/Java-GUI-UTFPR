@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JMenuItem;
 
 public class AlunoWindow {
 
@@ -68,8 +69,14 @@ public class AlunoWindow {
 		JMenu menuArquivo = new JMenu("Arquivo");
 		menuBar.add(menuArquivo);
 		
+		JMenuItem itemSair = new JMenuItem("Sair");
+		menuArquivo.add(itemSair);
+		
 		JMenu menuAjuda = new JMenu("Ajuda");
 		menuBar.add(menuAjuda);
+		
+		JMenuItem itemSobre = new JMenuItem("Sobre");
+		menuAjuda.add(itemSobre);
 		
 		JLabel lblRegistroAcademico = new JLabel("Registro Acadêmico");
 		lblRegistroAcademico.setFont(new Font("Tahoma", Font.PLAIN, 14));
