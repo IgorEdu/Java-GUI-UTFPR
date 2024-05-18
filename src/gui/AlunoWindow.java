@@ -14,6 +14,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.JSeparator;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -34,6 +35,7 @@ public class AlunoWindow {
 	private JTable tblAlunos;
 	
 	private MaskFormatter mascaraData;
+	private ButtonGroup btnGrupoSexo;
 
 	/**
 	 * Launch the application.
@@ -131,6 +133,11 @@ public class AlunoWindow {
 		JRadioButton rbNaoInformar = new JRadioButton("Não Informar");
 		rbNaoInformar.setBounds(22, 97, 103, 21);
 		painelSexo.add(rbNaoInformar);
+		
+		btnGrupoSexo = new ButtonGroup();
+		btnGrupoSexo.add(rbMasculino);
+		btnGrupoSexo.add(rbFeminino);
+		btnGrupoSexo.add(rbNaoInformar);
 		
 		JLabel lblCurso = new JLabel("Curso");
 		lblCurso.setFont(new Font("Tahoma", Font.PLAIN, 14));
