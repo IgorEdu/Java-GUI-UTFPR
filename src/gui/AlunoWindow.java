@@ -16,9 +16,11 @@ import javax.swing.JSpinner;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 import javax.swing.JMenuItem;
 import javax.swing.JFormattedTextField;
 import javax.swing.JScrollPane;
@@ -30,6 +32,8 @@ public class AlunoWindow {
 	private JTextField txtRegistroAcademico;
 	private JTextField txtCoeficiente;
 	private JTable tblAlunos;
+	
+	private MaskFormatter mascaraData;
 
 	/**
 	 * Launch the application.
@@ -51,13 +55,22 @@ public class AlunoWindow {
 	 * Create the application.
 	 */
 	public AlunoWindow() {
-		initialize();
+		this.criarMascaraData();
+		this.initComponents();
+	}
+	
+	private void criarMascaraData() {
+		try {
+			this.mascaraData = new MaskFormatter("##/##/####");
+		} catch(ParseException e){
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initComponents() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 650, 710);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -191,7 +204,7 @@ public class AlunoWindow {
 			}
 		));
 		
-		JFormattedTextField txtDataIngresso = new JFormattedTextField();
+		JFormattedTextField txtDataIngresso = new JFormattedTextField(mascaraData);
 		txtDataIngresso.setBounds(344, 218, 108, 19);
 		frame.getContentPane().add(txtDataIngresso);
 	}
