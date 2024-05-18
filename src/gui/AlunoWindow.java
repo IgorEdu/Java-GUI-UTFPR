@@ -11,12 +11,16 @@ import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
 
 public class AlunoWindow {
 
 	private JFrame frame;
 	private JTextField txtNome;
 	private JTextField txtRegistroAcademico;
+	private JTextField txtDataIngresso;
+	private JTextField txtCoeficiente;
 
 	/**
 	 * Launch the application.
@@ -46,7 +50,7 @@ public class AlunoWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 613, 760);
+		frame.setBounds(100, 100, 650, 710);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -72,7 +76,7 @@ public class AlunoWindow {
 		
 		txtNome = new JTextField();
 		txtNome.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		txtNome.setBounds(112, 90, 432, 19);
+		txtNome.setBounds(112, 90, 481, 19);
 		frame.getContentPane().add(txtNome);
 		txtNome.setColumns(10);
 		
@@ -84,7 +88,7 @@ public class AlunoWindow {
 		
 		JPanel painelSexo = new JPanel();
 		painelSexo.setBorder(new TitledBorder(null, "Sexo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		painelSexo.setBounds(41, 159, 192, 144);
+		painelSexo.setBounds(24, 162, 192, 144);
 		frame.getContentPane().add(painelSexo);
 		painelSexo.setLayout(null);
 		
@@ -99,5 +103,45 @@ public class AlunoWindow {
 		JRadioButton rbNaoInformar = new JRadioButton("Não Informar");
 		rbNaoInformar.setBounds(22, 97, 103, 21);
 		painelSexo.add(rbNaoInformar);
+		
+		JLabel lblCurso = new JLabel("Curso");
+		lblCurso.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCurso.setBounds(226, 173, 49, 13);
+		frame.getContentPane().add(lblCurso);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(285, 169, 308, 21);
+		frame.getContentPane().add(comboBox);
+		
+		JLabel lblDataIngresso = new JLabel("Data de Ingresso");
+		lblDataIngresso.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDataIngresso.setBounds(226, 219, 108, 13);
+		frame.getContentPane().add(lblDataIngresso);
+		
+		txtDataIngresso = new JTextField();
+		txtDataIngresso.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtDataIngresso.setColumns(10);
+		txtDataIngresso.setBounds(335, 216, 117, 19);
+		frame.getContentPane().add(txtDataIngresso);
+		
+		JLabel lblPeriodo = new JLabel("Período");
+		lblPeriodo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPeriodo.setBounds(476, 219, 67, 13);
+		frame.getContentPane().add(lblPeriodo);
+		
+		JSpinner spPeriodo = new JSpinner();
+		spPeriodo.setBounds(544, 215, 49, 20);
+		frame.getContentPane().add(spPeriodo);
+		
+		JLabel lblCoeficiente = new JLabel("Coeficiente");
+		lblCoeficiente.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCoeficiente.setBounds(226, 269, 108, 13);
+		frame.getContentPane().add(lblCoeficiente);
+		
+		txtCoeficiente = new JTextField();
+		txtCoeficiente.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtCoeficiente.setColumns(10);
+		txtCoeficiente.setBounds(335, 266, 117, 19);
+		frame.getContentPane().add(txtCoeficiente);
 	}
 }
