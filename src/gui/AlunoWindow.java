@@ -24,7 +24,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
+import entities.Aluno;
 import entities.Curso;
+import service.AlunoService;
 import service.CursoService;
 
 import javax.swing.JMenuItem;
@@ -38,13 +40,14 @@ public class AlunoWindow {
 	private JTextField txtRegistroAcademico;
 	private JTextField txtCoeficiente;
 	private JTable tblAlunos;
+	private JComboBox cbCurso;
 	
 	private MaskFormatter mascaraData;
 	private ButtonGroup btnGrupoSexo;
 	
 	private CursoService cursoService;
-	private JComboBox cbCurso;
-
+	private AlunoService alunoService;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -69,7 +72,30 @@ public class AlunoWindow {
 		this.initComponents();
 		
 		this.cursoService = new CursoService();
+		this.alunoService = new AlunoService();
+		
 		this.buscarCurso();
+		this.buscarAlunos();
+	}
+	
+	private void buscarAlunos() {
+		DefaultTableModel modelo = (DefaultTableModel) tblAlunos.getModel();
+		modelo.fireTableDataChanged();
+		modelo.setRowCount(0);
+		
+		List<Aluno> alunos = this.alunoService.buscarTodos();
+		
+		for(Aluno aluno : alunos) {
+			modelo.addRow(new Object[] {
+				aluno.getRegistroAcademico(),
+				aluno.getNome(),
+				aluno.getSexo(),
+				aluno.getCurso().getNome(),
+				aluno.getDataIngresso(),
+				aluno.getPeriodo(),
+				aluno.getCoeficiente()
+			});
+		}
 	}
 	
 	
