@@ -18,10 +18,15 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+
+import entities.Curso;
+import service.CursoService;
+
 import javax.swing.JMenuItem;
 import javax.swing.JFormattedTextField;
 import javax.swing.JScrollPane;
@@ -36,6 +41,9 @@ public class AlunoWindow {
 	
 	private MaskFormatter mascaraData;
 	private ButtonGroup btnGrupoSexo;
+	
+	private CursoService cursoService;
+	private JComboBox cbCurso;
 
 	/**
 	 * Launch the application.
@@ -59,6 +67,18 @@ public class AlunoWindow {
 	public AlunoWindow() {
 		this.criarMascaraData();
 		this.initComponents();
+		
+		this.cursoService = new CursoService();
+		this.buscarCurso();
+	}
+	
+	
+	private void buscarCurso() {
+		List<Curso> cursos = this.cursoService.buscarTodos();
+		
+		for(Curso curso : cursos) {
+			this.cbCurso.addItem(curso);
+		}
 	}
 	
 	private void criarMascaraData() {
@@ -144,9 +164,9 @@ public class AlunoWindow {
 		lblCurso.setBounds(226, 173, 49, 13);
 		frame.getContentPane().add(lblCurso);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(285, 169, 308, 21);
-		frame.getContentPane().add(comboBox);
+		cbCurso = new JComboBox();
+		cbCurso.setBounds(285, 169, 308, 21);
+		frame.getContentPane().add(cbCurso);
 		
 		JLabel lblDataIngresso = new JLabel("Data de Ingresso");
 		lblDataIngresso.setFont(new Font("Tahoma", Font.PLAIN, 14));
