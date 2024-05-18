@@ -17,6 +17,8 @@ import javax.swing.JSeparator;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class AlunoWindow {
 
@@ -25,6 +27,7 @@ public class AlunoWindow {
 	private JTextField txtRegistroAcademico;
 	private JTextField txtDataIngresso;
 	private JTextField txtCoeficiente;
+	private JTable tblAlunos;
 
 	/**
 	 * Launch the application.
@@ -165,5 +168,21 @@ public class AlunoWindow {
 		btnLimparCampos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnLimparCampos.setBounds(439, 352, 154, 42);
 		frame.getContentPane().add(btnLimparCampos);
+		
+		JPanel painelAlunos = new JPanel();
+		painelAlunos.setBorder(new TitledBorder(null, "Alunos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		painelAlunos.setBounds(24, 404, 569, 259);
+		frame.getContentPane().add(painelAlunos);
+		painelAlunos.setLayout(null);
+		
+		tblAlunos = new JTable();
+		tblAlunos.setBounds(10, 20, 549, 229);
+		tblAlunos.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+			}
+		));
+		painelAlunos.add(tblAlunos);
 	}
 }
